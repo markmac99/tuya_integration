@@ -2,7 +2,6 @@
 # 
 # copyright Mark McIntyre, 2026
 
-import json
 import argparse
 
 if __name__ == '__main__':
