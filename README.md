@@ -1,42 +1,30 @@
-# README for anker_integration
+# README for tuya_integration
 
-This folder contains configuration and other files for running the anker-mqtt gateway to capture data from your Solarbank E5000 to an MQTT broker.
+Copyright Mark McIntyre, 2025
+
+This folder contains configuration and other files for running the tuya-mqtt gateway to capture data from Tuya SmartLife compatible devices.
 
 ## Setup
 
-First clone required software `anker-mqtt-gateway` and this repo `anker_integration`
+First clone required software `tuya-mqtt` and `tuya-local-key`, and this repo `tuya_integration`
 
 ``` bash
 cd $HOME/src
-git clone https://github.com/netwdev/anker-mqtt-gateway.git
-git clone https://github.com/markmac99/anker_integration.git
+git clone  https://github.com/TheAgentK/tuya-mqtt
+git clone https://github.com/vineetchoudhary/tuya-local-key.git 
+git clone https://github.com/markmac99/tuya_integration.git
 ```
 
-In this repo, configure the `.env` file with your settings.
+Follow the README in `tuya-local-key` to get the device IDs and keys for your devices.
 
-Now copy the below files from this repo to `$HOME/src/anker-mqtt-gateway`:
+Copy `devices.conf.sample` in this repo to `devices.conf`, and update the file with your device IDs and Keys. Use double-quotes if any key contains special characters.
 
-``` bash
-getdata.sh
-ankermq.service
-installservice.sh
-.env
-```
+Follow the instructions in `tuya-mqtt`'s README to install the software.
 
-Create a conda runtime environment called `anker`
-
-``` bash
-conda create -n anker
-```
-
-Install the requirements in the environment
-
-``` bash
-conda activate anker
-pip install -r $HOME/src/anker-mqtt-gateway/requirements.txt
+Now copy `devices.conf`. `installservice.sh` and `tuya-mqtt.service1` from this repo to `$HOME/src/tuya-mqtt`.
 
 Finally, install and start the service
 
 ``` bash
-bash ./installservice.sh
+bash $HOME/src/tuya-mqtt/installservice.sh
 ```
